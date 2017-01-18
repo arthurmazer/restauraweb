@@ -56,7 +56,21 @@
 <script src="js/respond.min.js"></script>
 <script src="js/ios-orientationchange-fix.js"></script>
 <script type="text/javascript">
-	$(function() {
+    $(function() {
+
+    });
+    function gerapdf(){
+        $.ajax({
+            type: "POST",
+            url: $('#frmtable').attr("action"),
+            data: {"idProjeto": <?= $_POST['idProjeto'] ?> },
+            success: function (result) {
+                // do somthing here
+            }
+        });
+    }
+
+    $(function() {
 		$(".paper-table").tablecloth({
 			theme: "paper",
 			striped: true,
@@ -263,38 +277,9 @@
 </head>
 <body>
 <div class="layout">
-	<!-- Navbar
-    ================================================== -->
-	<div class="navbar navbar-inverse top-nav">
-		<div class="navbar-inner">
-			<div class="container">
-				<span class="home-link"><a href="./index.php" class="icon-home"></a></span><a class="brand" href="./index.php"><img src="images/logo-saf.png"  width="103" height="50" alt="Falgun" style="margin-top: 13px"></a>
-				          <?php if( isset($_COOKIE['loginusuario']) && !empty($_COOKIE['loginusuario']) && $_COOKIE['tipousuario'] == 1){  ?>
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-th-large"></i> Menu Administrador <b class="icon-angle-down"></b></a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a href="admin.php"><i class="icon-list-alt"></i> Lista de Projetos </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <?php } ?>
-				
-				<div class="btn-toolbar pull-right notification-nav">
-                    <div class="btn-toolbar pull-right notification-nav">
-                        <div class="btn-group">
-                            <div class="dropdown">
-                                <a class="btn btn-notification" href="./index.php"><i class="icon-reply"></i></a>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <?php
+    include("_include/top.php");
+    ?>
 	<div class="leftbar leftbar-close clearfix">
 		
 		<div class="left-nav clearfix">
@@ -457,6 +442,7 @@
 					</div>
 				</div>
 			</div>
+            <form action="./pdf/pdfrelatorio.php" method="post" id="frmtable" >
             <div class="row-fluid">
                 <div class="span3">
                     <div class="board-widgets orange small-widget">
@@ -468,17 +454,20 @@
                         <a style="cursor: default"><span class="widget-stat"><?=$_POST['hTotPioneiras']?></span><span class="widget-icon icon-cloud"></span><span class="widget-label">Total de Espécies</span></a>
                     </div>
                 </div>
+
                 <div class="span3">
                     <div class="board-widgets green brown small-widget">
-                        <a><span class="widget-icon icon-file"></span><span class="widget-label">Gerar PDF</span></a>
+                        <a onclick="gerapdf();"><span class="widget-icon icon-file"></span><span class="widget-label">Gerar PDF</span></a>
                     </div>
                 </div>
+
                 <div class="span3">
                     <div class="board-widgets bondi-blue small-widget">
                         <a><span class="widget-icon icon-table"></span><span class="widget-label">Gerar Excel</span></a>
                     </div>
                 </div>
             </div>
+            </form>
 			<div class="row-fluid">
                 <div class="span12">
                     <div class="content-widgets light-gray">

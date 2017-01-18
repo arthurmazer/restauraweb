@@ -19,10 +19,10 @@ class DbConnection
         //external file with configurations
         //$config = parse_ini_file('/../_include/config.ini');
 
-        $this->username = "u784847468_braca";
+        $this->username = "bracatinga";
         $this->password = "Tamarindo3418";
-        $this->database_name = "u784847468_dbtre";
-        $this->url = "mysql.hostinger.com.br";
+        $this->database_name = "dbtre";
+        $this->url = "localhost";
         $this->connection = mysqli_connect($this->url,$this->username,$this->password,$this->database_name);
         //mysqli_query("SET character_set_results=utf8", $this->connection);
         //mb_language('uni');

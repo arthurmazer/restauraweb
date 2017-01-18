@@ -71,21 +71,9 @@
 </script>
 <body>
 <div class="layout">
-	<!-- Navbar================================================== -->
-	<div class="navbar navbar-inverse top-nav">
-		<div class="navbar-inner">
-			<div class="container">
-				<span class="home-link"><a href="index.html" class="icon-home"></a></span><a class="brand" href="./index.php"><img src="images/logo-saf.png" width="103" height="50" alt="Falgun" style="margin-top: 13px"></a>
-				<div class="btn-toolbar pull-right notification-nav">
-					<div class="btn-group">
-						<div class="dropdown">
-							<a class="btn btn-notification" href="./index.php"><i class="icon-reply"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <?php
+    include("_include/top.php");
+    ?>
 	<div class="container">
 		<form class="form-signin" name="frmlog" id="frmlog" action="./index.php" method="post">
 			<h3 class="form-signin-heading">Área do Administrador</h3>
