@@ -3,7 +3,7 @@
 	height:50px;
 	position:fixed;
 	bottom:0px;
-	left:0px;
+	right:0px;
 	background: #002a47; /* Old browsers */
 	display:none;
 }
@@ -108,7 +108,9 @@
 	height:100%;
 	background:#e1e1e1;
 	width:260px;
-	position: absolute;
+	position: fixed;
+    overflow-y: scroll;
+
 }
 .left-primary-nav {
 	width:50px;
@@ -343,9 +345,11 @@
 }
 .main-wrapper {
 	margin-left:260px;
+    margin-top: 50px;
 	padding-top:20px;
 	background:#fff;
 	min-height:1000px;
+    top: 150px;
 }
 .responsive-leftbar {
 	width:50px;
@@ -1978,6 +1982,7 @@ form.cmxform label.error {
 .copyright {
 	text-align:right;
 	padding:10px 20px;
+    margin-right: 3%;
 }
 .copyright p {
 	margin-bottom:0px;
@@ -2743,8 +2748,9 @@ display:block;
 top:0px;
 }
  .leftbar {
-position:absolute;
+position:fixed;
 z-index:9000;
+
 }
 .leftbar.leftbar-close {
 left:-260px;
