@@ -29,6 +29,10 @@
     <!--fav and touch icons -->
     <link rel="shortcut icon" href="ico/favicon.ico">
     <!--============ javascript ===========-->
+
+
+
+
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui-1.10.1.custom.min.js"></script>
     <script src="js/bootstrap.js"></script>
@@ -44,6 +48,17 @@
     <script src="js/ios-orientationchange-fix.js"></script>
     <script src="js/jquery.sticky.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/relatorio.js"></script>
+    <script src="js/jspdf.min.js"></script>
+    <script src="js/jspdf.plugin.autotable.min.js"></script>
+    <script src="js/jquery.flot.js"></script>
+    <script src="js/jquery.flot.selection.js"></script>
+    <script src="js/excanvas.js"></script>
+    <script src="js/jquery.flot.pie.js"></script>
+    <script src="js/jquery.tablesorter.min.js"></script>
+    <script src="js/jquery.flot.tooltip.js"></script>
+    <script src="js/jquery.flot.resize.js"></script>
+
 
 
     <!--============= relatorio ============

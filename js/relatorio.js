@@ -1,4 +1,5 @@
 $(function() {
+
     $(".paper-table").tablecloth({
         theme: "paper",
         striped: true,
@@ -186,4 +187,45 @@ $(function() {
 
 
 });
+
+function gerapdf($idProjeto){
+    var columns = [{title: "Qtd"},  {title: "Nome Científico"},{title: "Nome Popular"},{title:  "Nativa"}, {title: "Classe\nSucessional"},{title:  "Zoocórica"},{title:  "Ameaçada"}, {title: "Hábito"}, {title: "Tol.\nEncharcamento"}];
+    var dadostabela = [];
+    $.ajax({
+        type: "POST",
+        url: "./_ajax/json_relatorio.php",
+        data: {idProjeto: $idProjeto},
+        success: function(data){
+            console.log(data);
+            data=$.parseJSON(data);
+
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+                var array_data = [];
+                for (var key in obj) {
+                    var attrValue = obj[key];
+                    array_data.push(attrValue);
+                }
+                dadostabela.push(array_data);
+            }
+
+            var doc = new jsPDF('l');
+            doc.text(7, 15, "Mudas Selecionadas");
+            doc.autoTable(columns, dadostabela, {
+                startY: 20,
+                margin: {horizontal: 7},
+                styles: {overflow: 'linebreak', columnWidth: 'wrap'},
+                columnStyles: {text: {columnWidth: 'auto'}}
+            });
+            doc.save("relatorio-mudas.pdf");
+
+        },
+        error: function(ajaxContext){
+            console.log(ajaxContext);
+        }
+    });
+
+}
+
+
 

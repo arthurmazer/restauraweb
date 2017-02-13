@@ -5,28 +5,10 @@
 <html lang="en">
 <head>
 
-<!--============ javascript ===========-->
-<script src="js/jquery.flot.js"></script>
-<script src="js/jquery.flot.selection.js"></script>
-<script src="js/excanvas.js"></script>
-<script src="js/jquery.flot.pie.js"></script>
-<script src="js/jquery.tablesorter.min.js"></script>
-<script src="js/jquery.flot.tooltip.js"></script>
-<script src="js/jquery.flot.resize.js"></script>
-<script src="js/relatorio.js"></script>
-<script type="text/javascript">
-    function gerapdf(){
-        $.ajax({
-            type: "POST",
-            url: $('#frmtable').attr("action"),
-            data: {"idProjeto": <?= $_POST['idProjeto'] ?> },
-            success: function (result) {
-                    // do somthing here
-            }
-        });
-    }
-</script>
 <?php include("_include/top.php"); ?>
+<!--============ javascript ===========-->
+
+
 </head>
 <body>
 <div class="layout">
@@ -62,13 +44,13 @@
 
                 <div class="span3">
                     <div class="board-widgets green brown small-widget">
-                        <a onclick="gerapdf();"><span class="widget-icon icon-file"></span><span class="widget-label">Gerar PDF</span></a>
+                        <a onclick="gerapdf(<?= $_POST['idProjeto'] ?>);"><span class="widget-icon icon-file"></span><span class="widget-label">Gerar PDF</span></a>
                     </div>
                 </div>
 
                 <div class="span3">
                     <div class="board-widgets bondi-blue small-widget">
-                        <a><span class="widget-icon icon-table"></span><span class="widget-label">Gerar Excel</span></a>
+                        <a href="/spa/download/excel.php?id=<?= $_POST['idProjeto'] ?>" target="_blank"><span class="widget-icon icon-table"></span><span class="widget-label">Gerar Excel</span></a>
                     </div>
                 </div>
             </div>

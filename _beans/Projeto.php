@@ -58,5 +58,8 @@ class Projeto
         return $db->insere_muda_projeto($this->idProjeto, $especie, $quantidade);
     }
 
+    public function get_mudas_projeto(){
+        $db = new DbConnection();
+    }
 
 }
