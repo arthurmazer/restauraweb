@@ -31,13 +31,13 @@ class Relatorio
                 $rel = new Relatorio();
 
                 $rel->quantidade = $row['quantidade'];
-                $rel->nomeCientifico = $row['nomecientifico'];
-                $rel->nomePopular = $row['nomepopular'];
-                $rel->nativa = $row['nativa'];
-                $rel->classeSucessional = $row['classesucessional'];
-                $rel->zoocorica = $row['zoocorica'];
-                $rel->ameacada = $row['ameacada'];
-                $rel->habito = $row['habito'];
+                $rel->nomeCientifico = utf8_encode($row['nomecientifico']);
+                $rel->nomePopular = utf8_encode($row['nomepopular']);
+                $rel->nativa = utf8_encode($row['nativa']);
+                $rel->classeSucessional = utf8_encode($row['classesucessional']);
+                $rel->zoocorica = utf8_encode($row['zoocorica']);
+                $rel->ameacada = utf8_encode($row['ameacada']);
+                $rel->habito = utf8_encode($row['habito']);
                 $rel->tolerancia = $row['tolerancia'];
 
                 array_push($arr_rel,$rel);

@@ -1,5 +1,5 @@
 $(function() {
-
+    
     $(window).scroll(function(e){
         var $el = $('.fixedElement');
         var isPositionFixed = ($el.css('position') == 'fixed');
@@ -103,7 +103,7 @@ $(function() {
                     $quantNativas++;
                 }
 
-                //verifica se é nativa
+                //verifica habito
                 if ($("#rowHabito"+$i).html().trim() == "Arbusto"){
                     $quantArbustivas++;
                 }
@@ -289,24 +289,49 @@ $(function() {
 
 
             if ($("#hTotPioneiras").val() < 80) {
-                alert("Você não atingiu a quantidade mínima de nativas. Mínima: " + 80 + ", Você escolheu: " + $("#hTotPioneiras").val());
+                swal({
+                    title: "Erro!",
+                    text: "Você não atingiu a quantidade mínima de nativas de espécies diferentes. Mínima: " + 80 + ", Você escolheu: " + $("#hTotPioneiras").val(),
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
 
             if ($("#hTxEspZoocoricas").val() < 40) {
-                alert("Você não atingiu a taxa de zoocóricas em relação ao número de espécies. Mínima: 40%, Você escolheu: " + $("#hTxEspZoocoricas").val() + '%');
+                swal({
+                    title: "Erro!",
+                    text: "Você não atingiu a taxa de zoocóricas em relação ao número de espécies. Mínima: 40%, Você escolheu: " + $("#hTxEspZoocoricas").val() + "%",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
             if ($("#hTxAmeacada").val() < 5) {
-                alert("Você não atingiu a taxa de ameaçadas em relação ao número de espécies. Mínima: 5%, Você escolheu: " + $("#hTxAmeacada").val() + '%');
+                swal({
+                    title: "Erro!",
+                    text: "Você não atingiu a taxa de ameaçadas em relação ao número de espécies. Mínima: 5%, Você escolheu: " + $("#hTxAmeacada").val() + "%",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
             if ($("#hTxEspPioneira").val() < 40 || $("#hTxEspNaoPioneira").val() < 40) {
-                alert("Você não atingiu a taxa de P e NP em relação ao número de espécies. Mínima: 40%, Máximo: 60%, Você escolheu: " + $("#hTxEspPioneira").val() + "% de P e " + $("#hTxEspNaoPioneira").val() + "% de NP");
+                swal({
+                    title: "Erro!",
+                    text: "Você não atingiu a taxa de P e NP em relação ao número de espécies. Mínima: 40%, Máximo: 60%, Você escolheu: " + $("#hTxEspPioneira").val() + "% de P e " + $("#hTxEspNaoPioneira").val() + "% de NP",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
             if ($("#hTxIndivPioneira").val() < 40 || $("#hTxIndivNaoPioneira").val() < 40) {
-                alert("Você não atingiu a taxa de P e NP em relação ao número de indivíduos. Mínima: 40%, Máximo: 60%, Você escolheu: " + $("#hTxEspPioneira").val() + "% de P e " + $("#hTxEspNaoPioneira").val() + "% de NP");
+                swal({
+                    title: "Erro!",
+                    text: "Você não atingiu a taxa de P e NP em relação ao número de indivíduos. Mínima: 40%, Máximo: 60%, Você escolheu: " + $("#hTxEspPioneira").val() + "% de P e " + $("#hTxEspNaoPioneira").val() + "% de NP",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
 
@@ -315,7 +340,12 @@ $(function() {
             });
 
             if ($fPioneira.length != 0) {
-                alert("Você escolheu mais de 10% de uma única espécie pioneira.");
+                swal({
+                    title: "Erro!",
+                    text: "Você escolheu mais de 10% de uma única espécie pioneira",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
 
@@ -324,12 +354,22 @@ $(function() {
             });
 
             if ($fNaoPioneira.length != 0) {
-                alert("Você escolheu mais de 5% de uma única espécie não pioneira.");
+                swal({
+                    title: "Erro!",
+                    text: "Você escolheu mais de 5% de uma única espécie não pioneira",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
 
             if ($("#hTxMenosQueSeis").val() > 10) {
-                alert($("#hTxMenosQueSeis").val() + "% de suas espécies tem menos que 6 indíviduos. Máximo permitido: 10%");
+                swal({
+                    title: "Erro!",
+                    text: $("#hTxMenosQueSeis").val() + "% de suas espécies tem menos que 6 indíviduos. Máximo permitido: 10%",
+                    type: "error",
+                    confirmButtonText: "OK"
+                });
                 return false;
             }
 
@@ -358,7 +398,6 @@ $(function() {
                 $("#frmtable").submit();
             },
             error: function(ajaxContext){
-                console.log(ajaxContext);
             }
         });
 

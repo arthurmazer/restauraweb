@@ -38,6 +38,8 @@ class DbConnection
         return $this->connection;
     }
 
+
+
     function insere_nova_especie($nomeCientifico, $nomePopular, $nativa, $classeSucessional, $zoocorica,$ameacada, $habito, $tolerancia,$tabela){
 
         echo $nativa . '-';
@@ -126,6 +128,17 @@ class DbConnection
             return $this->resultSet;
         }
 
+    }
+
+    function retorna_tabelas_especies(){
+        $sql = "select DISTINCT(tabelaReferente) from especie;";
+        $this->resultSet = mysqli_query($this->connection,$sql);
+        if ($this->resultSet == false){
+            exit("Erro#0348 - Banco de dados Falhou!");
+        }else{
+            //success
+            return $this->resultSet;
+        }
     }
 	
 	function top_dez_especies(){

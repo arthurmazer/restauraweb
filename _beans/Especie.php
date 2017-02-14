@@ -34,14 +34,14 @@ class Especie
                 $esp = new Especie();
 
                 $esp->idEspecie = $row['idEspecie'];
-                $esp->nomeCientifico = $row['nomeCientifico'];
-                $esp->nomePopular = $row['nomePopular'];
-                $esp->nativa = $row['nativa'];
-                $esp->classeSucessional = $row['classeSucessional'];
-                $esp->zoocorica = $row['zoocorica'];
-                $esp->ameacada = $row['ameacada'];
-                $esp->habito = $row['habito'];
-                $esp->tolerancia = $row['tolerancia'];
+                $esp->nomeCientifico = utf8_encode($row['nomeCientifico']);
+                $esp->nomePopular = utf8_encode($row['nomePopular']);
+                $esp->nativa = utf8_encode($row['nativa']);
+                $esp->classeSucessional = utf8_encode($row['classeSucessional']);
+                $esp->zoocorica = utf8_encode($row['zoocorica']);
+                $esp->ameacada = utf8_encode($row['ameacada']);
+                $esp->habito = utf8_encode($row['habito']);
+                $esp->tolerancia = utf8_encode($row['tolerancia']);
                 $esp->tabelaReferente = $row['tabelaReferente'];
 
                 array_push($arr_esp,$esp);
@@ -51,6 +51,26 @@ class Especie
             echo "PROBLEMA AO SELECIONAR BANCO DE ESPÉCIES!";
             return -1;
         }
+    }
+
+    public function getTabelasEspecies(){
+        $arr_esp = array();
+
+        $db = new DbConnection();
+        $rst = $db->retorna_tabelas_especies();
+        if ( $rst ){
+            while ($row = mysqli_fetch_assoc($rst)){
+                $esp = new Especie();
+                $esp->tabelaReferente = $row['tabelaReferente'];
+
+                array_push($arr_esp,$esp);
+            }
+            return $arr_esp;
+        }else{
+            echo "PROBLEMA AO SELECIONAR BANCO DE ESPÉCIES!";
+            return -1;
+        }
+
     }
 
     /**
